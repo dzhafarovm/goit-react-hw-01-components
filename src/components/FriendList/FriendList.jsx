@@ -6,32 +6,22 @@ export default function FriendList({ friends }) {
     <div>
       <ul className={css.friendList}>
         {friends.map(friend => {
-          if (friend.isOnline) {
-            return (
-              <li key={friend.id} className={css.item}>
-                <span className={`${css.status} ${css.statusTrue}`}></span>
-                <img
-                  className={css.avatar}
-                  src={friend.avatar}
-                  alt={friend.name}
-                  width="48"
-                />
-                <p className={css.name}>{friend.name}</p>
-              </li>
-            );
-          } else
-            return (
-              <li key={friend.id} className={css.item}>
-                <span className={`${css.status} ${css.statusFalse}`}></span>
-                <img
-                  className={css.avatar}
-                  src={friend.avatar}
-                  alt={friend.name}
-                  width="48"
-                />
-                <p className={css.name}>{friend.name}</p>
-              </li>
-            );
+          return (
+            <li key={friend.id} className={css.item}>
+              <span
+                className={`${css.status} ${
+                  friend.isOnline ? css.statusTrue : css.statusFalse
+                }`}
+              ></span>
+              <img
+                className={css.avatar}
+                src={friend.avatar}
+                alt={friend.name}
+                width="48"
+              />
+              <p className={css.name}>{friend.name}</p>
+            </li>
+          );
         })}
       </ul>
     </div>
